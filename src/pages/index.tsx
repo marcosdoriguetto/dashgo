@@ -9,11 +9,11 @@ export default function SignIn() {
         w="100%"
         maxW={368}
         bg="gray.800"
-        p={8}
+        p="8"
         borderRadius="8px"
         flexDir="column"
       >
-        <Stack spacing={4} mb={6}>
+        <Stack spacing="4" mb="6">
           <Input name="email" type="email" label="E-mail" />
 
           <Input name="password" type="password" label="Senha" />
