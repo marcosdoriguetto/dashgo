@@ -1,5 +1,9 @@
-import { Flex, Icon, Input, Text } from "@chakra-ui/react";
-import { RiSearchLine as SearchIcon } from "react-icons/ri";
+import { Avatar, Box, Flex, HStack, Icon, Input, Text } from "@chakra-ui/react";
+import {
+  RiNotificationLine as NotificationIcon,
+  RiSearchLine as SearchIcon,
+  RiUserAddLine as UserIcon,
+} from "react-icons/ri";
 
 export function Header() {
   return (
@@ -43,6 +47,32 @@ export function Header() {
         />
 
         <Icon as={SearchIcon} fontSize="20" />
+      </Flex>
+
+      <Flex align="center" ml="auto">
+        <HStack
+          spacing="8"
+          mx="8"
+          pr="8"
+          py="1"
+          color="gray.300"
+          borderRightWidth={1}
+          borderColor="gray.700"
+        >
+          <Icon as={NotificationIcon} />
+          <Icon as={UserIcon} />
+        </HStack>
+
+        <Flex align="center">
+          <Box mr="4" textAlign="right">
+            <Text>Marcos Fernandes</Text>
+            <Text color="gray.300" fontSize="small">
+              marcosdoriguetto@gmail.com
+            </Text>
+          </Box>
+
+          <Avatar size="md" name="Marcos Fernandes" />
+        </Flex>
       </Flex>
     </Flex>
   );
