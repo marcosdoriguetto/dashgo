@@ -9,4 +9,5 @@ export interface NavSectionProps {
 export interface NavLinkProps extends ChakraLinkProps {
   title: string;
   icon: ElementType;
+  href: string;
 }

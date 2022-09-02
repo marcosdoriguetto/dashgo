@@ -24,7 +24,7 @@ export default function Dashboard() {
           minChildWidth={320}
           alignItems="flex-start"
         >
-          <Box p="8" pb="4" bg="gray.800" borderRadius={8}>
+          <Box p={["6", "8"]} pb="4" bg="gray.800" borderRadius={8}>
             <Text fontSize="lg" mb="4">
               Subscribers of the week
             </Text>
@@ -32,7 +32,7 @@ export default function Dashboard() {
             <Chart options={options} series={series} type="area" height={160} />
           </Box>
 
-          <Box p="8" pb="4" bg="gray.800" borderRadius={8}>
+          <Box p={["6", "8"]} pb="4" bg="gray.800" borderRadius={8}>
             <Text fontSize="lg" mb="4">
               Open rate
             </Text>
