@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 type User = {
   name: string;
   email: string;
-  create_at: string;
+  created_at: string;
 };
 
 export function makeServer() {
