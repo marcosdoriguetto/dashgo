@@ -9,15 +9,21 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 
 import { Input } from "../../components/Form/Input";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
+import { api } from "../../services/api";
+import { queryClient } from "../../services/queryClient";
 import { CreateUserFormData } from "./CreateUser.interface";
 import { resolver } from "./CreateUser.validation";
 
 export default function CreateUser() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -26,8 +32,28 @@ export default function CreateUser() {
     resolver,
   });
 
-  const handleCreateUser: SubmitHandler<CreateUserFormData> = (values) => {
-    console.log(values);
+  const createUser = useMutation(
+    async (user: CreateUserFormData) => {
+      const response = await api.post("users", {
+        ...user,
+        created_at: new Date(),
+      });
+
+      return response.data.user;
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("user-list");
+      },
+    }
+  );
+
+  const handleCreateUser: SubmitHandler<CreateUserFormData> = async (
+    values
+  ) => {
+    createUser.mutateAsync(values);
+
+    router.push("/users");
   };
 
   return (
